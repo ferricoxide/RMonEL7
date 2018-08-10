@@ -302,3 +302,7 @@ systemctl restart httpd && logit success || \
 
 # Try to activate epel as needed
 NeedEpel
+
+# Get rid of localhost6 /etc/hosts binding
+sed -i '/localhost6/s/^/# /' /etc/hosts && echo "Commented out." || \
+  echo "Failed to comment out localhost6 line: postmap will likely balk"
